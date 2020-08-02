@@ -1,4 +1,4 @@
-name: progressx build
+name: build
 
 on:
   push:
