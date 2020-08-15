@@ -14,8 +14,19 @@
 // limitations under the License.
 //  
 
-import Foundation
+import SwiftUI
 
-class ProgressX {
+struct ProgressXView: View {
     
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
 }
+
+#if DEBUG
+struct ProgressXView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProgressXView()
+    }
+}
+#endif
