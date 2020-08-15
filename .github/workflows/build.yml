@@ -21,7 +21,7 @@ jobs:
           - 'platform=iOS Simulator,name=iPhone 11 Pro,OS=13.6'
           - 'platform=tvOS Simulator,name=Apple TV,OS=13.3'
           - 'platform=OS X,arch=x86_64'
-          - 'platform=watchOS Simulator,name=iPhone 11 Pro,OS=13.6'
+          - 'platform=watchOS Simulator,name=Apple Watch Series 5 - 40mm,OS=6.2.1'
     
     steps:
       - uses: actions/checkout@v2
