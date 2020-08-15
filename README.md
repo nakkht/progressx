@@ -1,8 +1,14 @@
 # ProgressX
 
 ![ProgressX build](https://github.com/nakkht/progressx/workflows/build/badge.svg)
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-brightgreen)
 
-UI library for iOS displaying progress. Inspired by progress indicator displayed during SpaceX live streams.
+UI library for displaying progress. Inspired by progress indicator displayed during SpaceX live streams.
+
+## Requirements
+
+- Xcode 11.0+
+- Swift 5.1+
 
 ## Author
 * [Paulius Gudonis](https://pgu.dev)
