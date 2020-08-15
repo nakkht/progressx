@@ -25,10 +25,11 @@ struct MilestonCircleView: View {
     var strokeWidth: CGFloat = 2
     var strokeDistance: CGFloat = 5
     var dividerWidth: CGFloat = 3
-    var dividerHeight: CGFloat = 20
+    var dividerHeight: CGFloat = 10
     var padding: CGFloat = 4
     var message: String
     var orderFlipped = false
+    var showCenter = true
     
     var body: some View {
         VStack(spacing: 0) {
@@ -59,7 +60,7 @@ struct MilestonCircleView: View {
     
     var circleView: some View {
         Circle()
-            .foregroundColor(color)
+            .foregroundColor(showCenter ? color : color.opacity(0))
             .padding(strokeDistance)
             .background(
                 Circle()
