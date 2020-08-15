@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76880AD724E80C2F00F84CA8 /* MilestonCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */; };
 		76C3383A24E7F93600446370 /* ProgressXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C3383924E7F93600446370 /* ProgressXView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonCircleView.swift; sourceTree = "<group>"; };
 		76C3383924E7F93600446370 /* ProgressXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressXView.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"ProgressX::ProgressX::Product" /* ProgressX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProgressX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				76C3383924E7F93600446370 /* ProgressXView.swift */,
+				76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -116,6 +119,7 @@
 			buildActionMask = 0;
 			files = (
 				76C3383A24E7F93600446370 /* ProgressXView.swift in Sources */,
+				76880AD724E80C2F00F84CA8 /* MilestonCircleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
