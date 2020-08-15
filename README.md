@@ -1,5 +1,9 @@
 # ProgressX
 
+![ProgressX build](https://github.com/nakkht/progressx/workflows/build/badge.svg)
+
+UI library for iOS displaying progress. Inspired by progress indicator displayed during SpaceX live streams.
+
 ## Author
 * [Paulius Gudonis](https://pgu.dev)
 
