@@ -20,7 +20,7 @@ struct MilestonCircleView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     
-    var size: CGFloat = 30
+    var size: CGFloat = 15
     var color: Color = Color.gray
     var strokeWidth: CGFloat = 2
     var strokeDistance: CGFloat = 5
@@ -29,7 +29,7 @@ struct MilestonCircleView: View {
     var padding: CGFloat = 4
     var message: String
     var orderFlipped = false
-    var showCenter = true
+    var showCenter = false
     
     var body: some View {
         VStack(spacing: 0) {

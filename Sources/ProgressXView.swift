@@ -18,15 +18,39 @@ import SwiftUI
 
 struct ProgressXView: View {
     
+    var milestones: [Info]
+    
+    @State private var moveAlongPath = false
+    
     var body: some View {
-        Text("Hello")
+        ZStack {
+            ProgressArcView()
+            GeometryReader {
+                self.milestoneView(for: $0.size)
+            }
+        }
+        .background(Color.blue.opacity(0.3))
+        .frame(height: 200)
+        .onAppear {
+            self.moveAlongPath.toggle()
+        }
+    }
+    
+    func milestoneView(for size: CGSize) -> some View {
+        ForEach(milestones) {
+            MilestonCircleView(message: $0.message)
+                .offset(y: -(size.width - 19))
+                .rotationEffect(.radians(self.moveAlongPath ? 0.0 : .pi*2))
+                .animation(Animation.linear(duration: 10).repeatForever(autoreverses: false))
+                .position(CGPoint(x: size.width/2, y: size.height/2 + size.width))
+        }
     }
 }
 
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressXView()
+        ProgressXView(milestones: [Info(message: "Dragon")])
     }
 }
 #endif

@@ -21,7 +21,7 @@ struct ProgressArcView: View {
     var strokeWidth: CGFloat = 3
     var leadingColor = Color.primary
     var trailingColor = Color.gray
-    var dividerHeight: CGFloat = 14
+    var dividerHeight: CGFloat = 12
     
     var body: some View {
         GeometryReader {
@@ -39,7 +39,6 @@ struct ProgressArcView: View {
                       clockwise: false)
             $0.move(to: CGPoint(x: size.width/2, y: size.height/2 + dividerHeight*0.5))
             $0.addLine(to: CGPoint(x: size.width/2, y: size.height/2 - dividerHeight*0.5))
-            
         }
         .strokedPath(StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
         .foregroundColor(leadingColor)
