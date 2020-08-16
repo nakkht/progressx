@@ -18,9 +18,10 @@ import SwiftUI
 
 struct ProgressXView: View {
     
-    var milestones: [Info]
+    @ObservedObject var viewModel: ProgressXViewModel
     
     @State private var moveAlongPath = false
+    @State private var currentTime: String = ""
     
     var body: some View {
         ZStack {
@@ -28,21 +29,34 @@ struct ProgressXView: View {
             GeometryReader {
                 self.milestoneView(for: $0.size)
             }
+            self.infoText
         }
-        .background(Color.blue.opacity(0.3))
         .frame(height: 200)
         .onAppear {
+            self.viewModel.scheduleUpdates()
             self.moveAlongPath.toggle()
         }
     }
     
     func milestoneView(for size: CGSize) -> some View {
-        ForEach(milestones) {
-            MilestonCircleView(message: $0.message)
-                .offset(y: -(size.width - 19))
-                .rotationEffect(.radians(self.moveAlongPath ? 0.0 : .pi*2))
-                .animation(Animation.linear(duration: 10).repeatForever(autoreverses: false))
+        ForEach(viewModel.milestones) {
+            MilestonCircleView(milestone: $0)
+                .animation(nil)
+                .offset(y: -(size.width - 12))
+                .rotationEffect(.radians(self.moveAlongPath ? -.pi*0.5 : .pi*0.5))
+                .animation(Animation.linear(duration: $0.duration * 2))
                 .position(CGPoint(x: size.width/2, y: size.height/2 + size.width))
+        }
+    }
+    
+    var infoText: some View {
+        VStack {
+            Spacer()
+            Text("\(currentTime)").onReceive(viewModel.timer) {
+                self.currentTime = self.viewModel.formatter.string(from: $0)
+            }
+            .font(.system(size: 24))
+            .foregroundColor(Color(red: 199, green: 200, blue: 200))
         }
     }
 }
@@ -50,7 +64,12 @@ struct ProgressXView: View {
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressXView(milestones: [Info(message: "Dragon")])
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 10),
+                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 14)]))
+            .background(Color.black)
+            .cornerRadius(16)
+            .clipped()
+            .padding(8)
     }
 }
 #endif

@@ -19,8 +19,8 @@ import SwiftUI
 struct ProgressArcView: View {
     
     var strokeWidth: CGFloat = 3
-    var leadingColor = Color.primary
-    var trailingColor = Color.gray
+    var leadingColor = Color(red: 189, green: 190, blue: 190)
+    var trailingColor = Color(red: 41, green: 42, blue: 47)
     var dividerHeight: CGFloat = 12
     
     var body: some View {
@@ -61,6 +61,7 @@ struct ProgressArcView: View {
 struct ArcView_Previews: PreviewProvider {
     static var previews: some View {
         ProgressArcView()
+            .background(Color.black)
     }
 }
 #endif

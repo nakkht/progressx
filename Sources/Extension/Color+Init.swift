@@ -14,10 +14,15 @@
 // limitations under the License.
 //  
 
-import Foundation
+import SwiftUI
 
-struct Info: Identifiable {
+extension Color {
     
-    var id = UUID()
-    var message: String
+    init(red: Int, green: Int, blue: Int, opacity: Double = 1) {
+        self.init(.sRGB,
+                  red: Double(red) / 255.0,
+                  green: Double(green) / 255.0,
+                  blue: Double(blue) / 255.0,
+                  opacity: opacity)
+    }
 }
