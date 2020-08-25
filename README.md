@@ -5,7 +5,8 @@
 
 UI library for displaying progress. Inspired by progress indicator displayed during SpaceX live streams.
 
-![progressx-gif](progressx.gif)
+![progressx-gif](Preview/progressx.gif)
+![spacex](Preview/spacex.png)
 
 ## Requirements
 
