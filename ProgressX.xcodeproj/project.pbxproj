@@ -58,13 +58,6 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		76DEA95124CD9EC500848A62 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		OBJ_15 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +71,6 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				76DEA95024CD9EB200848A62 /* Sources */,
-				76DEA95124CD9EC500848A62 /* Tests */,
 				OBJ_15 /* Products */,
 			);
 			sourceTree = "<group>";
