@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         destination: 
-          - 'platform=iOS Simulator,name=iPhone 11 Pro,OS=13.6'
+          - 'platform=iOS Simulator,name=iPhone 11 Pro,OS=13.7'
           - 'platform=tvOS Simulator,name=Apple TV,OS=13.4'
           - 'platform=OS X,arch=x86_64'
           - 'platform=watchOS Simulator,name=Apple Watch Series 5 - 40mm,OS=6.2.1'
