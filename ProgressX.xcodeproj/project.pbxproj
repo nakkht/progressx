@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		76880AD724E80C2F00F84CA8 /* MilestonCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */; };
-		7689797B24E8B43200C1A75E /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689797A24E8B43200C1A75E /* Milestone.swift */; };
-		7689797D24E9391900C1A75E /* Color+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689797C24E9391900C1A75E /* Color+Init.swift */; };
-		76C29E2E24E8847300E77514 /* ProgressArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C29E2D24E8847300E77514 /* ProgressArcView.swift */; };
-		76C3383A24E7F93600446370 /* ProgressXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C3383924E7F93600446370 /* ProgressXView.swift */; };
-		76D9A2F324E9447000A63936 /* ProgressXViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D9A2F224E9447000A63936 /* ProgressXViewModel.swift */; };
+		76E898372536F7200014DE4B /* ProgressXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898302536F71F0014DE4B /* ProgressXView.swift */; };
+		76E898382536F7200014DE4B /* Color+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898322536F71F0014DE4B /* Color+Init.swift */; };
+		76E898392536F7200014DE4B /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898332536F71F0014DE4B /* Milestone.swift */; };
+		76E8983A2536F7200014DE4B /* MilestonCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898342536F71F0014DE4B /* MilestonCircleView.swift */; };
+		76E8983B2536F7200014DE4B /* ProgressArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898352536F7200014DE4B /* ProgressArcView.swift */; };
+		76E8983C2536F7200014DE4B /* ProgressXViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E898362536F7200014DE4B /* ProgressXViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonCircleView.swift; sourceTree = "<group>"; };
-		7689797A24E8B43200C1A75E /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		7689797C24E9391900C1A75E /* Color+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Init.swift"; sourceTree = "<group>"; };
-		76C29E2D24E8847300E77514 /* ProgressArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressArcView.swift; sourceTree = "<group>"; };
-		76C3383924E7F93600446370 /* ProgressXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressXView.swift; sourceTree = "<group>"; };
-		76D9A2F224E9447000A63936 /* ProgressXViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressXViewModel.swift; sourceTree = "<group>"; };
+		76E898302536F71F0014DE4B /* ProgressXView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressXView.swift; sourceTree = "<group>"; };
+		76E898322536F71F0014DE4B /* Color+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Init.swift"; sourceTree = "<group>"; };
+		76E898332536F71F0014DE4B /* Milestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		76E898342536F71F0014DE4B /* MilestonCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestonCircleView.swift; sourceTree = "<group>"; };
+		76E898352536F7200014DE4B /* ProgressArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressArcView.swift; sourceTree = "<group>"; };
+		76E898362536F7200014DE4B /* ProgressXViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressXViewModel.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"ProgressX::ProgressX::Product" /* ProgressX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProgressX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -37,25 +37,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7689797E24E9395400C1A75E /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				7689797C24E9391900C1A75E /* Color+Init.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		76DEA95024CD9EB200848A62 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				76C3383924E7F93600446370 /* ProgressXView.swift */,
-				76D9A2F224E9447000A63936 /* ProgressXViewModel.swift */,
-				76880AD624E80C2F00F84CA8 /* MilestonCircleView.swift */,
-				76C29E2D24E8847300E77514 /* ProgressArcView.swift */,
-				7689797A24E8B43200C1A75E /* Milestone.swift */,
-				7689797E24E9395400C1A75E /* Extension */,
+				76E8982F2536F71F0014DE4B /* ProgressX */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		76E8982F2536F71F0014DE4B /* ProgressX */ = {
+			isa = PBXGroup;
+			children = (
+				76E898302536F71F0014DE4B /* ProgressXView.swift */,
+				76E898312536F71F0014DE4B /* Extension */,
+				76E898332536F71F0014DE4B /* Milestone.swift */,
+				76E898342536F71F0014DE4B /* MilestonCircleView.swift */,
+				76E898352536F7200014DE4B /* ProgressArcView.swift */,
+				76E898362536F7200014DE4B /* ProgressXViewModel.swift */,
+			);
+			path = ProgressX;
+			sourceTree = "<group>";
+		};
+		76E898312536F71F0014DE4B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				76E898322536F71F0014DE4B /* Color+Init.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		OBJ_15 /* Products */ = {
@@ -130,12 +138,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				76D9A2F324E9447000A63936 /* ProgressXViewModel.swift in Sources */,
-				76C29E2E24E8847300E77514 /* ProgressArcView.swift in Sources */,
-				76C3383A24E7F93600446370 /* ProgressXView.swift in Sources */,
-				7689797D24E9391900C1A75E /* Color+Init.swift in Sources */,
-				7689797B24E8B43200C1A75E /* Milestone.swift in Sources */,
-				76880AD724E80C2F00F84CA8 /* MilestonCircleView.swift in Sources */,
+				76E8983C2536F7200014DE4B /* ProgressXViewModel.swift in Sources */,
+				76E898392536F7200014DE4B /* Milestone.swift in Sources */,
+				76E898372536F7200014DE4B /* ProgressXView.swift in Sources */,
+				76E898382536F7200014DE4B /* Color+Init.swift in Sources */,
+				76E8983A2536F7200014DE4B /* MilestonCircleView.swift in Sources */,
+				76E8983B2536F7200014DE4B /* ProgressArcView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
