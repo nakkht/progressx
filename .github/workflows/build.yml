@@ -9,23 +9,13 @@ on:
 env:
   LC_CTYPE: en_US.UTF-8
   LANG: en_US.UTF-8
-  PROJECT: ProgressX.xcodeproj
-  SCHEME: ProgressX
-  
+
 jobs:
   macOS-5_3:
     name: Build iOS 14
-    strategy:
-      matrix:
-        destination: 
-          - 'platform=iOS Simulator,name=iPhone 12 Pro,OS=latest'
-          - 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (4th generation),OS=latest'
-          - 'platform=tvOS Simulator,name=Apple TV,OS=latest'
-          - 'platform=OS X,arch=x86_64'
-          - 'platform=watchOS Simulator,name=Apple Watch Series 5 - 44mm,OS=latest'
     runs-on: macos-11.0
     env:
-      DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,19 +25,11 @@ jobs:
           path: |
             ~/Library/Developer/Xcode/DerivedData
           key: ${{ runner.os }}-build-xcode-12
-      - name: Test
-        run: set -o pipefail && xcodebuild build -project $PROJECT -scheme $SCHEME -destination "${{ matrix.destination }}" | xcpretty
+      - name: Build
+        run: swift build -v
 
   macOS-5_2:
     name: Build iOS 13
-    strategy:
-      matrix:
-        destination: 
-          - 'platform=iOS Simulator,name=iPhone 11,OS=13.7'
-          - 'platform=iOS Simulator,name=iPad Pro (12.9-inch) (4th generation),OS=13.7'
-          - 'platform=tvOS Simulator,name=Apple TV,OS=13.4'
-          - 'platform=OS X,arch=x86_64'
-          - 'platform=watchOS Simulator,name=Apple Watch Series 5 - 40mm,OS=6.2.1'
     runs-on: macos-11.0
     env: 
       DEVELOPER_DIR: /Applications/Xcode_11.7.app/Contents/Developer
@@ -60,5 +42,5 @@ jobs:
           path: |
             ~/Library/Developer/Xcode/DerivedData
           key: ${{ runner.os }}-build-xcode-11
-      - name: Test
-        run: set -o pipefail && xcodebuild build -project $PROJECT -scheme $SCHEME -destination "${{ matrix.destination }}" | xcpretty
+      - name: Build
+        run: swift build -v
