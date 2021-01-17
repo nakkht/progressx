@@ -10,8 +10,8 @@ UI library for displaying progress. Inspired by progress indicator displayed dur
 
 ## Requirements
 
-- Xcode 11.0+
-- Swift 5.1+
+- Xcode 12.0+
+- Swift 5.3+
 
 ## Author
 * [Paulius Gudonis](https://pgu.dev)
