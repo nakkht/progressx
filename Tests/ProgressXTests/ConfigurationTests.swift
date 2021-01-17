@@ -12,22 +12,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+//  
 
-import SwiftUI
+import XCTest
+@testable import ProgressX
 
-public struct ColorTheme: Equatable {
+final class ConfigurationTests: XCTestCase {
     
-    public var background: Color
-    public var foreground: Color
-    public var text: Color
-    public var accent: Color
-    
-    public static var dark: ColorTheme {
-        ColorTheme(background: .black, foreground: .white, text: .gray, accent: .accentColor)
-    }
-    
-    public static var light: ColorTheme {
-        ColorTheme(background: .white, foreground: .clear, text: .black, accent: .accentColor)
+    func testDefaultConfiguration() {
+        let configuration = Configuration()
+        XCTAssertEqual(.dark, configuration.color)
     }
 }

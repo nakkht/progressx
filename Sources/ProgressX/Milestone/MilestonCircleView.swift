@@ -28,8 +28,6 @@ struct MilestonCircleView: View {
     var orderFlipped = false
     var milestone: Milestone
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     var body: some View {
         VStack(spacing: 0) {
             if (orderFlipped) {
@@ -47,7 +45,7 @@ struct MilestonCircleView: View {
     var messageView: some View {
         Text(milestone.message.uppercased())
             .font(.footnote)
-            .foregroundColor(colorScheme == .light ? color.foreground : color.foreground.colorInvert() as! Color)
+            .foregroundColor(color.foreground)
             .padding(messagePadding)
     }
     

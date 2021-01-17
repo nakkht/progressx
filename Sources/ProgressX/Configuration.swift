@@ -18,5 +18,5 @@ import Foundation
 
 public struct Configuration {
     
-    var color: ColorTheme
+    public var color = ColorTheme.dark
 }
