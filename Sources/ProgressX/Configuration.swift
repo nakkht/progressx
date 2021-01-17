@@ -1,5 +1,5 @@
 //
-// Copyright 2020 Paulius Gudonis
+// Copyright 2021 Paulius Gudonis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,15 +14,9 @@
 // limitations under the License.
 //  
 
-import SwiftUI
+import Foundation
 
-extension Color {
+public struct Configuration {
     
-    init(red: Int, green: Int, blue: Int, opacity: Double = 1) {
-        self.init(.sRGB,
-                  red: Double(red) / 255.0,
-                  green: Double(green) / 255.0,
-                  blue: Double(blue) / 255.0,
-                  opacity: opacity)
-    }
+    var color: ColorTheme
 }

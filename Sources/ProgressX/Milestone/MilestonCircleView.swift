@@ -19,8 +19,7 @@ import SwiftUI
 struct MilestonCircleView: View {
     
     var size: CGFloat = 15
-    var color: Color = Color(red: 199, green: 200, blue: 200)
-    var backgroundColor: Color = Color.black
+    var color: ColorTheme
     var strokeWidth: CGFloat = 2
     var strokeDistance: CGFloat = 4
     var dividerWidth: CGFloat = 3
@@ -48,13 +47,13 @@ struct MilestonCircleView: View {
     var messageView: some View {
         Text(milestone.message.uppercased())
             .font(.footnote)
-            .foregroundColor(colorScheme == .light ? color : color.colorInvert() as! Color)
+            .foregroundColor(colorScheme == .light ? color.foreground : color.foreground.colorInvert() as! Color)
             .padding(messagePadding)
     }
     
     var dividerView: some View {
         RoundedRectangle(cornerRadius: 1)
-            .fill(color)
+            .fill(color.foreground)
             .frame(width: dividerWidth, height: dividerHeight)
     }
     
@@ -65,8 +64,8 @@ struct MilestonCircleView: View {
             .background(
                 Circle()
                     .strokeBorder(lineWidth: strokeWidth)
-                    .foregroundColor(color)
-                    .background(backgroundColor))
+                    .foregroundColor(color.foreground)
+                    .background(color.background))
             .mask(Circle())
             .frame(width: self.size, height: self.size)
     }
@@ -75,7 +74,8 @@ struct MilestonCircleView: View {
 #if DEBUG
 struct MilestoneView_Previews: PreviewProvider {
     static var previews: some View {
-        MilestonCircleView(milestone: Milestone(message: "Hello world",
+        MilestonCircleView(color: ColorTheme.dark,
+                           milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
                                                 duration: 10))
     }
