@@ -23,15 +23,15 @@ final class ColorThemeTests: XCTestCase {
         let theme = ColorTheme.dark
         XCTAssertEqual(.black, theme.background)
         XCTAssertEqual(.white, theme.foreground)
-        XCTAssertEqual(.gray, theme.text)
-        XCTAssertEqual(.accentColor, theme.accent)
+        XCTAssertEqual(.white, theme.text)
+        XCTAssertEqual(.gray, theme.accent)
     }
     
     func testDefaultLightTheme() {
         let theme = ColorTheme.light
         XCTAssertEqual(.white, theme.background)
-        XCTAssertEqual(.clear, theme.foreground)
+        XCTAssertEqual(.black, theme.foreground)
         XCTAssertEqual(.black, theme.text)
-        XCTAssertEqual(.accentColor, theme.accent)
+        XCTAssertEqual(.gray, theme.accent)
     }
 }

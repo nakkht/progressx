@@ -16,15 +16,15 @@
 
 import Foundation
 
-struct Milestone: Identifiable {
+public struct Milestone: Identifiable {
     
-    var id = UUID()
-    var message: String
-    var startTime: Date
-    var duration: TimeInterval
-    var isCompleted: Bool = false
+    public var id = UUID()
+    public var message: String
+    public var startTime: Date
+    public var duration: TimeInterval
+    public var isCompleted = false
     
-    var deadlineTime: TimeInterval {
+    public var deadlineTime: TimeInterval {
         startTime.addingTimeInterval(duration).timeIntervalSince1970
     }
 }

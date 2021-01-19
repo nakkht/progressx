@@ -19,10 +19,14 @@ import SwiftUI
 struct ProgressXView: View {
     
     @ObservedObject var viewModel: ProgressXViewModel
-    @State var color: ColorTheme
+    @State var configuration: Configuration
     
     @State private var moveAlongPath = false
     @State private var currentTime: String = ""
+    
+    private var color: ColorTheme {
+        configuration.color
+    }
     
     var body: some View {
         ZStack {
@@ -41,7 +45,7 @@ struct ProgressXView: View {
     
     func milestoneView(for size: CGSize) -> some View {
         ForEach(viewModel.milestones) {
-            MilestonCircleView(color: color, milestone: $0)
+            MilestonCircleView(configuration: configuration, milestone: $0)
                 .animation(nil)
                 .offset(y: -(size.width - 12))
                 .rotationEffect(.radians(self.moveAlongPath ? -.pi*0.5 : .pi*0.5))
@@ -66,7 +70,8 @@ struct ProgressXView: View {
 struct ProgressXView_Previews: PreviewProvider {
     static var previews: some View {
         ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 10),
-                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 14)]), color: ColorTheme.dark)
+                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 14)]),
+                      configuration: .defaultDark)
             .background(Color.black)
             .cornerRadius(16)
             .clipped()

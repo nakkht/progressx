@@ -20,7 +20,7 @@ import XCTest
 final class ConfigurationTests: XCTestCase {
     
     func testDefaultConfiguration() {
-        let configuration = Configuration()
+        let configuration = Configuration.defaultDark
         XCTAssertEqual(.dark, configuration.color)
     }
 }

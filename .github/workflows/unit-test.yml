@@ -26,3 +26,14 @@ jobs:
           key: ${{ runner.os }}-test-xcode-12
       - name: Test
         run: swift test --enable-code-coverage -v 2>&1 | xcpretty
+      - name: Export code coverage
+        if: github.ref == 'refs/heads/develop'
+        run: xcrun llvm-cov export -format="lcov" .build/x86_64-apple-macosx/debug/ProgressXPackageTests.xctest/Contents/MacOS/ProgressXPackageTests -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata > .build/progressx-coverage.lcov
+      - name: Upload code coverage
+        if: github.ref == 'refs/heads/develop'
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: .build/progressx-coverage.lcov
+          fail_ci_if_error: true
+          verbose: true

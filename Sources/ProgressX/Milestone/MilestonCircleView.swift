@@ -18,15 +18,13 @@ import SwiftUI
 
 struct MilestonCircleView: View {
     
-    var size: CGFloat = 15
-    var color: ColorTheme
-    var strokeWidth: CGFloat = 2
-    var strokeDistance: CGFloat = 4
-    var dividerWidth: CGFloat = 3
-    var dividerHeight: CGFloat = 5
-    var messagePadding: CGFloat = 2
-    var orderFlipped = false
+    var configuration: Configuration
     var milestone: Milestone
+    
+    @State var orderFlipped = false
+    var color: ColorTheme {
+        configuration.color
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,38 +42,44 @@ struct MilestonCircleView: View {
     
     var messageView: some View {
         Text(milestone.message.uppercased())
-            .font(.footnote)
-            .foregroundColor(color.foreground)
-            .padding(messagePadding)
+            .font(.body)
+            .foregroundColor(color.text)
     }
     
     var dividerView: some View {
         RoundedRectangle(cornerRadius: 1)
             .fill(color.foreground)
-            .frame(width: dividerWidth, height: dividerHeight)
+            .frame(width: configuration.dividerWidth, height: configuration.dividerHeight)
     }
     
     var circleView: some View {
         Circle()
-            .foregroundColor(milestone.isCompleted ? .white : .none)
-            .padding(strokeDistance)
+            .foregroundColor(milestone.isCompleted ? color.accent : .none)
+            .padding(configuration.strokeDistance)
             .background(
                 Circle()
-                    .strokeBorder(lineWidth: strokeWidth)
                     .foregroundColor(color.foreground)
                     .background(color.background))
             .mask(Circle())
-            .frame(width: self.size, height: self.size)
+            .frame(width: configuration.circleSize, height: configuration.circleSize)
     }
 }
 
 #if DEBUG
 struct MilestoneView_Previews: PreviewProvider {
     static var previews: some View {
-        MilestonCircleView(color: ColorTheme.dark,
+        MilestonCircleView(configuration: .defaultLight,
                            milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
                                                 duration: 10))
+            .background(Color.white)
+            .colorScheme(.light)
+        
+        MilestonCircleView(configuration: .defaultDark,
+                           milestone: Milestone(message: "Hello world",
+                                                startTime: Date(),
+                                                duration: 10))
+            .colorScheme(.dark)
     }
 }
 #endif

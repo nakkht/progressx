@@ -14,9 +14,33 @@
 // limitations under the License.
 //  
 
-import Foundation
+import SwiftUI
 
 public struct Configuration {
     
-    public var color = ColorTheme.dark
+    public var color: ColorTheme
+    public var circleSize: CGFloat
+    public var strokeWidth: CGFloat
+    public var strokeDistance: CGFloat
+    public var dividerWidth: CGFloat
+    public var dividerHeight: CGFloat
+    public var orderFlipped = false
+    
+    public static var defaultDark: Configuration {
+        Configuration(color: .dark,
+                      circleSize: 15,
+                      strokeWidth: 2,
+                      strokeDistance: 4,
+                      dividerWidth: 3,
+                      dividerHeight: 5)
+    }
+    
+    public static var defaultLight: Configuration {
+        Configuration(color: .light,
+                      circleSize: 15,
+                      strokeWidth: 2,
+                      strokeDistance: 4,
+                      dividerWidth: 3,
+                      dividerHeight: 5)
+    }
 }
