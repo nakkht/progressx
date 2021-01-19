@@ -1,6 +1,8 @@
 # ProgressX
 
-![progressx build](https://github.com/nakkht/progressx/workflows/build/badge.svg)
+![build](https://github.com/nakkht/progressx/workflows/Build/badge.svg)
+![unit test](https://github.com/nakkht/progressx/workflows/Unit%20test/badge.svg)
+![code size](https://img.shields.io/github/languages/code-size/nakkht/progressx?color=brightgreen)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-brightgreen)
 
 UI library for displaying progress. Inspired by progress indicator displayed during SpaceX live streams.
