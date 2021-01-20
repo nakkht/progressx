@@ -57,7 +57,7 @@ struct ProgressArcView: View {
     }
     
     func arcCenter(for size: CGSize) -> CGPoint {
-        CGPoint(x: size.width / 2, y: size.height/2 + size.width)
+        CGPoint(x: size.width / 2, y: size.height / 2 + size.width)
     }
 }
 
