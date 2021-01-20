@@ -21,7 +21,6 @@ public struct Configuration {
     public var color: ColorTheme
     public var circleSize: CGFloat
     public var strokeWidth: CGFloat
-    public var strokeDistance: CGFloat
     public var dividerWidth: CGFloat
     public var dividerHeight: CGFloat
     public var orderFlipped = false
@@ -30,7 +29,6 @@ public struct Configuration {
         Configuration(color: .dark,
                       circleSize: 15,
                       strokeWidth: 2,
-                      strokeDistance: 4,
                       dividerWidth: 3,
                       dividerHeight: 5)
     }
@@ -39,7 +37,6 @@ public struct Configuration {
         Configuration(color: .light,
                       circleSize: 15,
                       strokeWidth: 2,
-                      strokeDistance: 4,
                       dividerWidth: 3,
                       dividerHeight: 5)
     }

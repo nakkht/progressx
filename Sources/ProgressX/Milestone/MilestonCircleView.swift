@@ -27,7 +27,7 @@ struct MilestonCircleView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: -1) {
             if (orderFlipped) {
                 self.messageView
                 self.dividerView
@@ -54,12 +54,10 @@ struct MilestonCircleView: View {
     
     var circleView: some View {
         Circle()
-            .foregroundColor(milestone.isCompleted ? color.accent : .none)
-            .padding(configuration.strokeDistance)
-            .background(
-                Circle()
-                    .foregroundColor(color.foreground)
-                    .background(color.background))
+            .strokeBorder(color.foreground, lineWidth: configuration.strokeWidth)
+            .background(Circle()
+                            .foregroundColor(milestone.isCompleted ? color.foreground : .clear)
+                            .padding(configuration.strokeWidth * 2))
             .mask(Circle())
             .frame(width: configuration.circleSize, height: configuration.circleSize)
     }
@@ -71,14 +69,16 @@ struct MilestoneView_Previews: PreviewProvider {
         MilestonCircleView(configuration: .defaultLight,
                            milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
-                                                duration: 10))
+                                                duration: 10,
+                                                isCompleted: true))
             .background(Color.white)
             .colorScheme(.light)
         
         MilestonCircleView(configuration: .defaultDark,
                            milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
-                                                duration: 10))
+                                                duration: 10,
+                                                isCompleted: true))
             .colorScheme(.dark)
     }
 }
