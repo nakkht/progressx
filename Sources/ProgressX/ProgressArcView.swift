@@ -18,10 +18,10 @@ import SwiftUI
 
 struct ProgressArcView: View {
     
-    var strokeWidth: CGFloat = 3
-    var leadingColor = Color(red: 189, green: 190, blue: 190)
-    var trailingColor = Color(red: 41, green: 42, blue: 47)
-    var dividerHeight: CGFloat = 12
+    var configuration: Configuration
+    var color: ColorTheme {
+        configuration.color
+    }
     
     var body: some View {
         GeometryReader {
@@ -32,36 +32,44 @@ struct ProgressArcView: View {
     
     func leadingArcView(for size: CGSize) -> some View {
         Path {
-            $0.addArc(center: CGPoint(x: size.width/2, y: size.height/2 + size.width),
+            $0.addArc(center: self.arcCenter(for: size),
                       radius: size.width,
                       startAngle: Angle(radians: .pi),
-                      endAngle: Angle(radians: .pi*1.5),
+                      endAngle: Angle(radians: .pi * 1.5),
                       clockwise: false)
-            $0.move(to: CGPoint(x: size.width/2, y: size.height/2 + dividerHeight*0.5))
-            $0.addLine(to: CGPoint(x: size.width/2, y: size.height/2 - dividerHeight*0.5))
+            $0.move(to: CGPoint(x: size.width / 2, y: size.height / 2 + configuration.splitHeight * 0.5))
+            $0.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - configuration.splitHeight * 0.5))
         }
-        .strokedPath(StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
-        .foregroundColor(leadingColor)
+        .strokedPath(StrokeStyle(lineWidth: configuration.strokeWidth, lineCap: .round))
+        .foregroundColor(color.foreground)
     }
     
     func trailingArcView(for size: CGSize) -> some View {
         Path {
-            $0.addArc(center: CGPoint(x: size.width/2, y: size.height/2 + size.width),
+            $0.addArc(center: self.arcCenter(for: size),
                       radius: size.width,
-                      startAngle: Angle(radians: .pi*1.5),
-                      endAngle: Angle(radians: .pi*2),
+                      startAngle: Angle(radians: .pi * 1.5),
+                      endAngle: Angle(radians: .pi * 2),
                       clockwise: false)
         }
-        .stroke(lineWidth: strokeWidth)
-        .foregroundColor(trailingColor)
+        .stroke(lineWidth: configuration.strokeWidth)
+        .foregroundColor(color.foreground)
+    }
+    
+    func arcCenter(for size: CGSize) -> CGPoint {
+        CGPoint(x: size.width / 2, y: size.height/2 + size.width)
     }
 }
 
 #if DEBUG
 struct ArcView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressArcView()
-            .background(Color.black)
+        ProgressArcView(configuration: .defaultLight)
+            .background(Color.white)
+            .colorScheme(.light)
+        
+        ProgressArcView(configuration: .defaultDark)
+            .colorScheme(.dark)
     }
 }
 #endif

@@ -30,7 +30,7 @@ struct ProgressXView: View {
     
     var body: some View {
         ZStack {
-            ProgressArcView()
+            ProgressArcView(configuration: configuration)
             GeometryReader {
                 self.milestoneView(for: $0.size)
             }
@@ -48,9 +48,9 @@ struct ProgressXView: View {
             MilestonCircleView(configuration: configuration, milestone: $0)
                 .animation(nil)
                 .offset(y: -(size.width - 12))
-                .rotationEffect(.radians(self.moveAlongPath ? -.pi*0.5 : .pi*0.5))
+                .rotationEffect(.radians(self.moveAlongPath ? -.pi * 0.5 : .pi * 0.5))
                 .animation(Animation.linear(duration: $0.duration * 2))
-                .position(CGPoint(x: size.width/2, y: size.height/2 + size.width))
+                .position(CGPoint(x: size.width / 2, y: size.height / 2 + size.width))
         }
     }
     
@@ -69,13 +69,9 @@ struct ProgressXView: View {
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 10),
-                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 14)]),
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 3),
+                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 5)]),
                       configuration: .defaultDark)
-            .background(Color.black)
-            .cornerRadius(16)
-            .clipped()
-            .padding(8)
     }
 }
 #endif
