@@ -49,7 +49,7 @@ struct ProgressXView: View {
                 .animation(nil)
                 .offset(y: -(size.width - 12))
                 .rotationEffect(.radians(self.moveAlongPath ? -.pi * 0.5 : .pi * 0.5))
-                .animation(Animation.linear(duration: $0.duration * 2))
+                .animation(.linear(duration: $0.duration * 2))
                 .position(CGPoint(x: size.width / 2, y: size.height / 2 + size.width))
         }
     }
