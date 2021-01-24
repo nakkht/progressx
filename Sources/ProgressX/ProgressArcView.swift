@@ -26,6 +26,7 @@ struct ProgressArcView: View {
     var body: some View {
         GeometryReader {
             self.trailingArcView(for: $0.size)
+            self.separatorView(for: $0.size)
             self.leadingArcView(for: $0.size)
         }
     }
@@ -37,8 +38,15 @@ struct ProgressArcView: View {
                       startAngle: Angle(radians: .pi),
                       endAngle: Angle(radians: .pi * 1.5),
                       clockwise: false)
-            $0.move(to: CGPoint(x: size.width / 2, y: size.height / 2 + configuration.splitHeight * 0.5))
-            $0.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - configuration.splitHeight * 0.5))
+        }
+        .strokedPath(StrokeStyle(lineWidth: configuration.strokeWidth, lineCap: .round))
+        .foregroundColor(color.foreground)
+    }
+    
+    func separatorView(for size: CGSize) -> some View {
+        Path {
+            $0.move(to: CGPoint(x: size.width / 2, y: size.height / 2 + configuration.circleSize * 0.5))
+            $0.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - configuration.circleSize * 0.5))
         }
         .strokedPath(StrokeStyle(lineWidth: configuration.strokeWidth, lineCap: .round))
         .foregroundColor(color.foreground)
@@ -66,9 +74,12 @@ struct ArcView_Previews: PreviewProvider {
     static var previews: some View {
         ProgressArcView(configuration: .defaultLight)
             .background(Color.white)
+            .edgesIgnoringSafeArea(.all)
             .colorScheme(.light)
         
         ProgressArcView(configuration: .defaultDark)
+            .background(Color.black)
+            .edgesIgnoringSafeArea(.all)
             .colorScheme(.dark)
     }
 }

@@ -22,12 +22,10 @@ struct MilestonCircleView: View {
     var milestone: Milestone
     
     @State var orderFlipped = false
-    var color: ColorTheme {
-        configuration.color
-    }
+    var color: ColorTheme { configuration.color }
     
     var body: some View {
-        VStack(spacing: -1) {
+        VStack(spacing: 0) {
             if (orderFlipped) {
                 self.messageView
                 self.dividerView
@@ -49,6 +47,7 @@ struct MilestonCircleView: View {
     var dividerView: some View {
         RoundedRectangle(cornerRadius: 1)
             .fill(color.foreground)
+            .overlay(Rectangle().offset(x: 0, y: -1))
             .frame(width: configuration.dividerWidth, height: configuration.dividerHeight)
     }
     
@@ -56,10 +55,10 @@ struct MilestonCircleView: View {
         Circle()
             .strokeBorder(color.foreground, lineWidth: configuration.strokeWidth)
             .background(Circle()
-                            .foregroundColor(milestone.isCompleted ? color.foreground : .clear)
+                            .foregroundColor(milestone.hasCompleted ? color.foreground : .clear)
                             .padding(configuration.strokeWidth * 2))
-            .mask(Circle())
             .background(color.background)
+            .clipShape(Circle())
             .frame(width: configuration.circleSize, height: configuration.circleSize)
     }
 }
@@ -71,7 +70,7 @@ struct MilestoneView_Previews: PreviewProvider {
                            milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
                                                 duration: 10,
-                                                isCompleted: true))
+                                                hasCompleted : true))
             .background(Color.white)
             .colorScheme(.light)
         
@@ -79,7 +78,8 @@ struct MilestoneView_Previews: PreviewProvider {
                            milestone: Milestone(message: "Hello world",
                                                 startTime: Date(),
                                                 duration: 10,
-                                                isCompleted: true))
+                                                hasCompleted : true))
+            .background(Color.black)
             .colorScheme(.dark)
     }
 }

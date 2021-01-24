@@ -19,30 +19,37 @@ import Combine
 
 class ProgressXViewModel: ObservableObject {
     
-    @Published var milestones = [Milestone]()
+    @Published var milestones: [Milestone]
+    @Published var currentTime = ""
+    @Published var isInProgress = false
     
-    let timer: Publishers.Autoconnect<Timer.TimerPublisher>
-    let formatter = DateFormatter()
-    private var timers: [Timer]?
+    private lazy var timers = [Timer]()
+    private let timer: Publishers.Autoconnect<Timer.TimerPublisher>
+    private lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
+    private var timerCancellable: AnyCancellable?
     
     init(_ milestones: [Milestone]) {
         self.timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-        self.formatter.dateFormat = "HH:mm:ss"
         self.milestones = milestones
+        self.timerCancellable = self.timer.sink { self.currentTime = self.formatter.string(from: $0) }
     }
     
-    func scheduleUpdates() {
-        timers = []
-        self.milestones.forEach { (milestone) in
+    func startTimers() {
+        milestones.forEach { (milestone) in
             let timer = Timer.scheduledTimer(withTimeInterval: milestone.duration, repeats: false) { (timer) in
                 var milestone = milestone
-                milestone.isCompleted = true
+                milestone.hasCompleted = true
                 if let index = self.milestones.firstIndex(where: { $0.id == milestone.id }) {
                     self.milestones[index] = milestone
                 }
-                self.timers?.removeAll(where: { $0 === timer })
+                self.timers.removeAll(where: { $0 === timer })
             }
-            timers?.append(timer)
+            self.timers.append(timer)
         }
+        self.isInProgress.toggle()
     }
 }

@@ -22,9 +22,9 @@ public struct Milestone: Identifiable {
     public var message: String
     public var startTime: Date
     public var duration: TimeInterval
-    public var isCompleted = false
+    public var hasCompleted = false
     
-    public var deadlineTime: TimeInterval {
-        startTime.addingTimeInterval(duration).timeIntervalSince1970
+    public var deadline: Date {
+        startTime.addingTimeInterval(duration)
     }
 }

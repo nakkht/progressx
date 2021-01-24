@@ -21,9 +21,6 @@ struct ProgressXView: View {
     @ObservedObject var viewModel: ProgressXViewModel
     @State var configuration: Configuration
     
-    @State private var moveAlongPath = false
-    @State private var currentTime: String = ""
-    
     private var color: ColorTheme {
         configuration.color
     }
@@ -36,10 +33,8 @@ struct ProgressXView: View {
             }
             self.infoText
         }
-        .frame(height: 400)
         .onAppear {
-            self.viewModel.scheduleUpdates()
-            self.moveAlongPath.toggle()
+            self.viewModel.startTimers()
         }
     }
     
@@ -47,31 +42,44 @@ struct ProgressXView: View {
         ForEach(viewModel.milestones) {
             MilestonCircleView(configuration: configuration, milestone: $0)
                 .animation(nil)
-                .offset(y: -(size.width - 9))
-                .rotationEffect(.radians(self.moveAlongPath ? -.pi * 0.5 : .pi * 0.5))
+                .offset(y: -(size.width - (self.configuration.circleSize / 2 + self.configuration.dividerHeight)))
+                .rotationEffect(.radians(viewModel.isInProgress ? -.pi * 0.5 : .pi * 0.5))
                 .animation(.linear(duration: $0.duration * 2))
-                .position(CGPoint(x: size.width / 2, y: size.height / 2 + size.width))
+                .position(arcCenter(for: size))
         }
     }
     
     var infoText: some View {
         VStack {
             Spacer()
-            Text("\(currentTime)").onReceive(viewModel.timer) {
-                self.currentTime = self.viewModel.formatter.string(from: $0)
-            }
-            .font(.system(size: 24))
-            .foregroundColor(Color(red: 199, green: 200, blue: 200))
+            Text("\(self.viewModel.currentTime)")
+                .font(.system(size: 24))
+                .foregroundColor(color.text)
         }
+    }
+    
+    func arcCenter(for size: CGSize) -> CGPoint {
+        CGPoint(x: size.width / 2, y: size.height / 2 + size.width)
     }
 }
 
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
+    
     static var previews: some View {
         ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 5),
                                                      Milestone(message: "Liftoff", startTime: Date(), duration: 10)]),
+                      configuration: .defaultLight)
+            .background(Color.white)
+            .colorScheme(.light)
+            .edgesIgnoringSafeArea(.all)
+        
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 5),
+                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 10)]),
                       configuration: .defaultDark)
+            .background(Color.black)
+            .colorScheme(.dark)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 #endif

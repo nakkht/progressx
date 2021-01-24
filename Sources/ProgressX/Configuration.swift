@@ -23,7 +23,6 @@ public struct Configuration {
     public var strokeWidth: CGFloat
     public var dividerWidth: CGFloat
     public var dividerHeight: CGFloat
-    public var splitHeight: CGFloat
     public var orderFlipped = false
     
     public static var defaultDark: Configuration {
@@ -31,8 +30,7 @@ public struct Configuration {
                       circleSize: 15,
                       strokeWidth: 2,
                       dividerWidth: 3,
-                      dividerHeight: 5,
-                      splitHeight: 12)
+                      dividerHeight: 5)
     }
     
     public static var defaultLight: Configuration {
@@ -40,7 +38,6 @@ public struct Configuration {
                       circleSize: 15,
                       strokeWidth: 2,
                       dividerWidth: 3,
-                      dividerHeight: 5,
-                      splitHeight: 12)
+                      dividerHeight: 5)
     }
 }
