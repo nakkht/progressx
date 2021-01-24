@@ -29,7 +29,7 @@ final class MilestoneTests: XCTestCase {
         
         XCTAssertEqual(id, milestone.id)
         XCTAssertEqual(message, milestone.message)
-        XCTAssertEqual(startTime, milestone.startTime)
+        XCTAssertEqual(startTime, milestone.startDate)
         XCTAssertEqual(duration, milestone.duration)
         XCTAssertFalse(milestone.isCompleted)
         XCTAssertEqual(endTime, milestone.deadlineTime)

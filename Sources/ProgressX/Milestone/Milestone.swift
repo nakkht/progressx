@@ -20,11 +20,11 @@ public struct Milestone: Identifiable {
     
     public var id = UUID()
     public var message: String
-    public var startTime: Date
+    public var startDate: Date
     public var duration: TimeInterval
     public var hasCompleted = false
     
     public var deadline: Date {
-        startTime.addingTimeInterval(duration)
+        startDate.addingTimeInterval(duration)
     }
 }

@@ -67,15 +67,15 @@ struct ProgressXView: View {
 struct ProgressXView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 5),
-                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 10)]),
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startDate: Date(), duration: 5),
+                                                     Milestone(message: "Liftoff", startDate: Date(), duration: 10)]),
                       configuration: .defaultLight)
             .background(Color.white)
             .colorScheme(.light)
             .edgesIgnoringSafeArea(.all)
         
-        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 5),
-                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 10)]),
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startDate: Date(), duration: 5),
+                                                     Milestone(message: "Liftoff", startDate: Date(), duration: 10)]),
                       configuration: .defaultDark)
             .background(Color.black)
             .colorScheme(.dark)

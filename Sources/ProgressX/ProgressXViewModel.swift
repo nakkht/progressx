@@ -40,7 +40,7 @@ class ProgressXViewModel: ObservableObject {
     
     func startTimers() {
         milestones.forEach { (milestone) in
-            let timer = Timer.scheduledTimer(withTimeInterval: milestone.duration, repeats: false) { (timer) in
+            let timer = Timer(fire: milestone.deadline, interval: 0, repeats: false) { (timer) in
                 var milestone = milestone
                 milestone.hasCompleted = true
                 if let index = self.milestones.firstIndex(where: { $0.id == milestone.id }) {
@@ -48,6 +48,7 @@ class ProgressXViewModel: ObservableObject {
                 }
                 self.timers.removeAll(where: { $0 === timer })
             }
+            RunLoop.main.add(timer, forMode: .common)
             self.timers.append(timer)
         }
         self.isInProgress.toggle()

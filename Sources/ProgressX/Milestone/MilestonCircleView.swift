@@ -68,7 +68,7 @@ struct MilestoneView_Previews: PreviewProvider {
     static var previews: some View {
         MilestonCircleView(configuration: .defaultLight,
                            milestone: Milestone(message: "Hello world",
-                                                startTime: Date(),
+                                                startDate: Date(),
                                                 duration: 10,
                                                 hasCompleted : true))
             .background(Color.white)
@@ -76,7 +76,7 @@ struct MilestoneView_Previews: PreviewProvider {
         
         MilestonCircleView(configuration: .defaultDark,
                            milestone: Milestone(message: "Hello world",
-                                                startTime: Date(),
+                                                startDate: Date(),
                                                 duration: 10,
                                                 hasCompleted : true))
             .background(Color.black)
