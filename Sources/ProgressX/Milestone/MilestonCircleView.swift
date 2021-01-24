@@ -59,6 +59,7 @@ struct MilestonCircleView: View {
                             .foregroundColor(milestone.isCompleted ? color.foreground : .clear)
                             .padding(configuration.strokeWidth * 2))
             .mask(Circle())
+            .background(color.background)
             .frame(width: configuration.circleSize, height: configuration.circleSize)
     }
 }

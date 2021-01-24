@@ -36,7 +36,7 @@ struct ProgressXView: View {
             }
             self.infoText
         }
-        .frame(height: 200)
+        .frame(height: 400)
         .onAppear {
             self.viewModel.scheduleUpdates()
             self.moveAlongPath.toggle()
@@ -47,7 +47,7 @@ struct ProgressXView: View {
         ForEach(viewModel.milestones) {
             MilestonCircleView(configuration: configuration, milestone: $0)
                 .animation(nil)
-                .offset(y: -(size.width - 12))
+                .offset(y: -(size.width - 9))
                 .rotationEffect(.radians(self.moveAlongPath ? -.pi * 0.5 : .pi * 0.5))
                 .animation(.linear(duration: $0.duration * 2))
                 .position(CGPoint(x: size.width / 2, y: size.height / 2 + size.width))
@@ -69,8 +69,8 @@ struct ProgressXView: View {
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 3),
-                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 5)]),
+        ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startTime: Date(), duration: 5),
+                                                     Milestone(message: "Liftoff", startTime: Date(), duration: 10)]),
                       configuration: .defaultDark)
     }
 }
