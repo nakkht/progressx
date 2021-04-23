@@ -25,7 +25,7 @@ jobs:
           path: |
             .build
           key: ${{ runner.os }}-build-cache
-      - name: Swiftlint
+      - name: Lint
         run: swiftlint
       - name: Build
         run: swift build -v
