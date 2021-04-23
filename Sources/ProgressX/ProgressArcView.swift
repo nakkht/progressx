@@ -17,12 +17,12 @@
 import SwiftUI
 
 struct ProgressArcView: View {
-    
+
     var configuration: Configuration
     var color: ColorTheme {
         configuration.color
     }
-    
+
     var body: some View {
         GeometryReader {
             self.trailingArcView(for: $0.size)
@@ -30,7 +30,7 @@ struct ProgressArcView: View {
             self.leadingArcView(for: $0.size)
         }
     }
-    
+
     func leadingArcView(for size: CGSize) -> some View {
         Path {
             $0.addArc(center: self.arcCenter(for: size),
@@ -42,7 +42,7 @@ struct ProgressArcView: View {
         .strokedPath(StrokeStyle(lineWidth: configuration.strokeWidth, lineCap: .round))
         .foregroundColor(color.foreground)
     }
-    
+
     func separatorView(for size: CGSize) -> some View {
         Path {
             $0.move(to: CGPoint(x: size.width / 2, y: size.height / 2 + configuration.circleSize * 0.5))
@@ -51,7 +51,7 @@ struct ProgressArcView: View {
         .strokedPath(StrokeStyle(lineWidth: configuration.strokeWidth, lineCap: .round))
         .foregroundColor(color.foreground)
     }
-    
+
     func trailingArcView(for size: CGSize) -> some View {
         Path {
             $0.addArc(center: self.arcCenter(for: size),
@@ -63,7 +63,7 @@ struct ProgressArcView: View {
         .stroke(lineWidth: configuration.strokeWidth)
         .foregroundColor(color.foreground)
     }
-    
+
     func arcCenter(for size: CGSize) -> CGPoint {
         CGPoint(x: size.width / 2, y: size.height / 2 + size.width)
     }
@@ -76,7 +76,7 @@ struct ArcView_Previews: PreviewProvider {
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
             .colorScheme(.light)
-        
+
         ProgressArcView(configuration: .defaultDark)
             .background(Color.black)
             .edgesIgnoringSafeArea(.all)

@@ -18,7 +18,7 @@ import XCTest
 @testable import ProgressX
 
 final class ConfigurationTests: XCTestCase {
-    
+
     func testDefaultConfiguration() {
         let configuration = Configuration.defaultDark
         XCTAssertEqual(.dark, configuration.color)

@@ -18,11 +18,11 @@ import Foundation
 import Combine
 
 class ProgressXViewModel: ObservableObject {
-    
+
     @Published var milestones: [Milestone]
     @Published var currentTime = ""
     @Published var isInProgress = false
-    
+
     private lazy var timers = [Timer]()
     private let timer: Publishers.Autoconnect<Timer.TimerPublisher>
     private lazy var formatter: DateFormatter = {
@@ -31,13 +31,13 @@ class ProgressXViewModel: ObservableObject {
         return formatter
     }()
     private var timerCancellable: AnyCancellable?
-    
+
     init(_ milestones: [Milestone]) {
         self.timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
         self.milestones = milestones
         self.timerCancellable = self.timer.sink { self.currentTime = self.formatter.string(from: $0) }
     }
-    
+
     func startTimers() {
         milestones.forEach { (milestone) in
             let timer = Timer(fire: milestone.deadline, interval: 0, repeats: false) { (timer) in

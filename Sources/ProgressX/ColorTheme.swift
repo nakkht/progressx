@@ -17,16 +17,16 @@
 import SwiftUI
 
 public struct ColorTheme: Equatable {
-    
+
     public var background: Color
     public var foreground: Color
     public var text: Color
     public var accent: Color
-    
+
     public static var dark: ColorTheme {
         ColorTheme(background: .black, foreground: .white, text: .white, accent: .gray)
     }
-    
+
     public static var light: ColorTheme {
         ColorTheme(background: .white, foreground: .black, text: .black, accent: .gray)
     }

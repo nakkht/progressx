@@ -18,7 +18,7 @@ import XCTest
 @testable import ProgressX
 
 final class ColorThemeTests: XCTestCase {
-    
+
     func testDefaultDarkTheme() {
         let theme = ColorTheme.dark
         XCTAssertEqual(.black, theme.background)
@@ -26,7 +26,7 @@ final class ColorThemeTests: XCTestCase {
         XCTAssertEqual(.white, theme.text)
         XCTAssertEqual(.gray, theme.accent)
     }
-    
+
     func testDefaultLightTheme() {
         let theme = ColorTheme.light
         XCTAssertEqual(.white, theme.background)

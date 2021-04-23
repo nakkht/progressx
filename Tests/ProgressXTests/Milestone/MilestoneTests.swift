@@ -18,14 +18,14 @@ import XCTest
 @testable import ProgressX
 
 final class MilestoneTests: XCTestCase {
-    
+
     func testDefaultValues() {
         let id = UUID()
         let message = "messageText"
         let startTime = Date()
         let duration = 10.0
         let milestone = Milestone(id: id, message: message, startDate: startTime, duration: duration)
-        
+
         XCTAssertEqual(id, milestone.id)
         XCTAssertEqual(message, milestone.message)
         XCTAssertEqual(startTime, milestone.startDate)

@@ -17,16 +17,16 @@
 import SwiftUI
 
 struct MilestonCircleView: View {
-    
+
     var configuration: Configuration
     var milestone: Milestone
-    
+
     @State var orderFlipped = false
     var color: ColorTheme { configuration.color }
-    
+
     var body: some View {
         VStack(spacing: 0) {
-            if (orderFlipped) {
+            if orderFlipped {
                 self.messageView
                 self.dividerView
                 self.circleView
@@ -37,20 +37,20 @@ struct MilestonCircleView: View {
             }
         }
     }
-    
+
     var messageView: some View {
         Text(milestone.message.uppercased())
             .font(.body)
             .foregroundColor(color.text)
     }
-    
+
     var dividerView: some View {
         RoundedRectangle(cornerRadius: 1)
             .fill(color.foreground)
             .overlay(Rectangle().offset(x: 0, y: -1))
             .frame(width: configuration.dividerWidth, height: configuration.dividerHeight)
     }
-    
+
     var circleView: some View {
         Circle()
             .strokeBorder(color.foreground, lineWidth: configuration.strokeWidth)
@@ -70,15 +70,15 @@ struct MilestoneView_Previews: PreviewProvider {
                            milestone: Milestone(message: "Hello world",
                                                 startDate: Date(),
                                                 duration: 10,
-                                                hasCompleted : true))
+                                                hasCompleted: true))
             .background(Color.white)
             .colorScheme(.light)
-        
+
         MilestonCircleView(configuration: .defaultDark,
                            milestone: Milestone(message: "Hello world",
                                                 startDate: Date(),
                                                 duration: 10,
-                                                hasCompleted : true))
+                                                hasCompleted: true))
             .background(Color.black)
             .colorScheme(.dark)
     }

@@ -17,13 +17,13 @@
 import Foundation
 
 public struct Milestone: Identifiable {
-    
+
     public var id = UUID()
     public var message: String
     public var startDate: Date
     public var duration: TimeInterval
     public var hasCompleted = false
-    
+
     public var deadline: Date {
         startDate.addingTimeInterval(duration)
     }

@@ -17,14 +17,14 @@
 import SwiftUI
 
 struct ProgressXView: View {
-    
+
     @ObservedObject var viewModel: ProgressXViewModel
     @State var configuration: Configuration
-    
+
     private var color: ColorTheme {
         configuration.color
     }
-    
+
     var body: some View {
         ZStack {
             ProgressArcView(configuration: configuration)
@@ -37,7 +37,7 @@ struct ProgressXView: View {
             self.viewModel.startTimers()
         }
     }
-    
+
     func milestoneView(for size: CGSize) -> some View {
         ForEach(viewModel.milestones) {
             MilestonCircleView(configuration: configuration, milestone: $0)
@@ -48,7 +48,7 @@ struct ProgressXView: View {
                 .position(arcCenter(for: size))
         }
     }
-    
+
     var infoText: some View {
         VStack {
             Spacer()
@@ -57,7 +57,7 @@ struct ProgressXView: View {
                 .foregroundColor(color.text)
         }
     }
-    
+
     func arcCenter(for size: CGSize) -> CGPoint {
         CGPoint(x: size.width / 2, y: size.height / 2 + size.width)
     }
@@ -65,7 +65,7 @@ struct ProgressXView: View {
 
 #if DEBUG
 struct ProgressXView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startDate: Date(), duration: 5),
                                                      Milestone(message: "Liftoff", startDate: Date(), duration: 10)]),
@@ -73,7 +73,7 @@ struct ProgressXView_Previews: PreviewProvider {
             .background(Color.white)
             .colorScheme(.light)
             .edgesIgnoringSafeArea(.all)
-        
+
         ProgressXView(viewModel: ProgressXViewModel([Milestone(message: "Startup", startDate: Date(), duration: 5),
                                                      Milestone(message: "Liftoff", startDate: Date(), duration: 10)]),
                       configuration: .defaultDark)

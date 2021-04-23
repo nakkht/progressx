@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(name: "ProgressX"),
         .testTarget(name: "ProgressXTests",
-                    dependencies: ["ProgressX"]),
+                    dependencies: ["ProgressX"])
     ],
     swiftLanguageVersions: [.v5]
 )
