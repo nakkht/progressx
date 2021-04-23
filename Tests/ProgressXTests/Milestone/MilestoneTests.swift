@@ -24,14 +24,11 @@ final class MilestoneTests: XCTestCase {
         let message = "messageText"
         let startTime = Date()
         let duration = 10.0
-        let milestone = Milestone(id: id, message: message, startTime: startTime, duration: duration)
-        let endTime = startTime.addingTimeInterval(duration).timeIntervalSince1970
+        let milestone = Milestone(id: id, message: message, startDate: startTime, duration: duration)
         
         XCTAssertEqual(id, milestone.id)
         XCTAssertEqual(message, milestone.message)
         XCTAssertEqual(startTime, milestone.startDate)
         XCTAssertEqual(duration, milestone.duration)
-        XCTAssertFalse(milestone.isCompleted)
-        XCTAssertEqual(endTime, milestone.deadlineTime)
     }
 }
